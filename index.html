@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+        }
+        input[type="number"], button {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #43c6ac;
+            color: white;
+            cursor: pointer;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        button:hover {
+            background-color: #191654;
+        }
+        div {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"]:focus {
+            border-color: #43c6ac;
+            outline: none;
+            background-color: #f0f8ff;
+        }
+        b {
+            font-weight: bold;
+            color: #1a2980;
+        }
+        input[type="number"] {
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+        strong {
+            color: #1a2980;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <h1>Calculate GST</h1>
+    <div style="text-align: center;">
+        <form method="post" action="calculate_GST.html">
+           <b> Price:</b><input type="number" id="price" placeholder="Enter price" /><br><br>
+           <b> GST Rate:</b><input type="number" id="gstRate" placeholder="Enter GST rate" /><br><br>
+            <button type="button" id="btn" onclick="CAL()">Calculate GST</button>
+            <strong>
+            <p id="result"></p>
+           <p id="gstAmount"></p>
+        </strong>
+        </form>
+    </div>
+    <script>
+        function CAL(){
+             var price = parseFloat(document.getElementById("price").value);
+    var gstRate = parseFloat(document.getElementById("gstRate").value);
+    var gstAmount = (price * gstRate) / 100;
+    var totalPrice = price + gstAmount;
+    document.getElementById("result").innerText = "GST Amount: " + gstAmount.toFixed(2); 
+    document.getElementById("gstAmount").innerText = "Total Price: " + totalPrice.toFixed(2);
+    document.getElementById("result").style.display = "block";
+        }
+    </script>
+</body>
+</html>
